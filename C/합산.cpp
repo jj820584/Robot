@@ -1,15 +1,26 @@
-#include <stdio.h>  //printf와 scanf같은 c언어 함수를 쓰기위한 헤더파일을 불러오는 작업
+#include <stdio.h>
 
-int main()
-{
-    int i, number, sum =0;
-    
-    printf("i를 입력하세요 \n\n");
-    scanf("%d", &number);           // 여기서 &는 number의 주소를 가져오는 것을 의미한다.
+int main() {
+    int scores[10];        // 학생 성적을 저장할 배열
+    int sum = 0;           // 총합 저장
+    double average;        // 평균 저장
+    int i;
 
-    for(i=1;i<=number;i++)
-    {
-        sum += i;
+    // 10명의 성적 입력받기
+    for (i = 0; i < 10; i++) {
+        printf("%d번째 학생의 성적을 입력하세요: ", i + 1);
+        scanf("%d", &scores[i]);
+
+        sum += scores[i];  // 입력과 동시에 합산
     }
-    printf("1부터 i까지의 합은 %d 입니다.", sum);    // 여기서 sum은 주소가 아닌 변수 그 자체를 불러온다.
+
+    // 평균 계산 (소수점 고려 → 실수형 나눗셈)
+    average = sum / 10.0;
+
+    // 결과 출력
+    printf("\n총합: %d\n", sum);
+    printf("평균: %.2f\n", average);
+
+    return 0;
 }
+
